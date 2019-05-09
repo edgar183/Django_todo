@@ -8,5 +8,19 @@
 </head>
 <body>
     <h1>Thinh I need to do ...</h1>
+    <table>
+        {% for item in items %}
+        <tr>
+            {% if item.done %}
+            <td><strike>{{ item.name }}</strike></td>
+            {% else %}
+            <td>{{ item.name }}</td>
+            {% endif %}
+        </tr>
+        {% empty %}
+        <!-- If list is empty in for loop this line will be displayed -->
+        <p>You have nothing to do.</p>
+        {% endfor %}
+    </table>
 </body>
 </html>
