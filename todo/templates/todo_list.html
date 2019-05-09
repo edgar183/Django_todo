@@ -16,6 +16,9 @@
             {% else %}
             <td>{{ item.name }}</td>
             {% endif %}
+            <td>
+                <form methor="GET" action="edit/{{ item.id }}"><input type="submit" value="Edit"></form>
+            </td>
         </tr>
         {% empty %}
         <!-- If list is empty in for loop this line will be displayed -->
