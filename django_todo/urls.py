@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from todo.views import get_todo_list
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    # r is for regular expretion and ^ is for start of url and $ end of url
+    url(r'^$', get_todo_list)
 ]
