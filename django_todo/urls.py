@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from todo.views import get_todo_list, create_an_item, edit_an_item
+from todo.views import get_todo_list, create_an_item, edit_an_item, toggle_status
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -25,5 +25,6 @@ urlpatterns = [
         # \d+ pass in digit that is biger then 9
         # ?P to tell that this is going to be an expression and
         # then we'll put it inside of angular brackets we'll put id
-    url(r'^edit/(?P<id>\d+)$', edit_an_item)
+    url(r'^edit/(?P<id>\d+)$', edit_an_item),
+    url(r'^toggle/(?P<id>\d+)$', toggle_status)
 ]
