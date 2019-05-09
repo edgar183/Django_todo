@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect 
 from .models import Item
+from .forms import ItemForm
 
 # Create your views here.
 def get_todo_list(request):
@@ -8,11 +9,11 @@ def get_todo_list(request):
     
 def create_an_item(request):
     if request.method == "POST":
-        new_item = Item()
-        new_item.name = request.POST.get('name')
-        # if done is present in request POST it will be true
-        new_item.done = 'done' in request.POST
-        new_item.save()
-        return redirect(get_todo_list)
-        
-    return render(request, 'item_form.html')
+        # create new form, files are used if any files is uploded
+        form = ItemForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect(get_todo_list)
+    else:
+        form = ItemForm()
+    return render(request, 'item_form.html', {'form': form})
