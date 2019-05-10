@@ -36,10 +36,12 @@
  - coverage report generates the report 
 
 ## Deployment to Heroku
-1. sudo pip3 install gunicorn
+1. sudo pip3 install gunicorn The server that will run project
 2. install PostgreSQL sudo pip3 install psycopg2
 3. create app from bash heroku create "app name" --region eu
 4. create DB heroku addons:create heroku-postgresql:hobby-dev
 5. to parse the DB url sudo pip3 install dj_database_url 
 6. chenge DATABASE url in settings.py to DATABASES = {'default': dj_database_url.parse("p***")}
-7. 
+7. Before push   "heroku config:set DISABLE_COLLECTSTATIC=1" this is if we dont have static files
+    1. echo web: gunicorn django_todo.wsgi:application > Procfile
+    
