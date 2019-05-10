@@ -44,4 +44,4 @@
 6. chenge DATABASE url in settings.py to DATABASES = {'default': dj_database_url.parse("p***")}
 7. Before push   "heroku config:set DISABLE_COLLECTSTATIC=1" this is if we dont have static files
     1. echo web: gunicorn django_todo.wsgi:application > Procfile
-    
+    2. git push heroku master
