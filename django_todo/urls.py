@@ -13,9 +13,11 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 from todo.views import get_todo_list, create_an_item, edit_an_item, toggle_status
+from accounts import urls as accounts_urls
+from accounts.views import index
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -26,5 +28,8 @@ urlpatterns = [
         # ?P to tell that this is going to be an expression and
         # then we'll put it inside of angular brackets we'll put id
     url(r'^edit/(?P<id>\d+)$', edit_an_item),
-    url(r'^toggle/(?P<id>\d+)$', toggle_status)
+    url(r'^toggle/(?P<id>\d+)$', toggle_status),
+    url(r'^index/$', index, name='index'),
+    url(r'^index/accounts/', include(accounts_urls))
+    
 ]

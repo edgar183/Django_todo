@@ -1,0 +1,14 @@
+{% extends 'base.html'%}
+
+{% block page_title %}Register Page {% endblock %}
+
+{% block page_heading %}User Register{% endblock %}
+
+{% block content %} 
+<form method='POST'>
+        {% csrf_token %}
+        {{ register_form.as_p }}
+        <button type="submit">Register</button>
+    </form>
+    <p> If you alredy have an account, you can <a href="{% url 'login' %}">sign in</a></p>
+{% endblock %}
